@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn Javascript</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <!-- Js area -->
+    <script>
+        function buttonClick() 
+        {
+            alert("Belajar Javascript itu membuat pusing menjadi hilang");
+        }
+        function confirmation()
+        {
+            let konfirmasi = confirm("Apakah Anda suka Belajar Web?");
+            if (konfirmasi === true) {
+                alert("Web juga suka kamu :)");
+            } else {
+                alert("Kamu Jahat!");
+            }
+        }
+        function getName() 
+        {
+            let name = prompt("Silahkan Ketik Nama Anda...");
+            alert("oh nama kamu "+name);    
+        }
+        function getNilai()
+        {
+            let alas = document.getElementById("alas_segitiga").value;
+            let tinggi = document.getElementById("tinggi_segitiga").value;
+            // Number() -> konversi ke dalam bentuk numeric
+            let hasil = 0.5 * Number(alas) * Number(tinggi);
+            document.getElementById("result").innerHTML = ("Luas Segitiga adalah "+hasil);
+
+            // perbedaan .value dan innerHTML
+            // .inner html digunakan ketika ingin mengisi content didalam tag ( <h3>...<h3> ) tersebut
+            // .value digunakan jika element yg dipanggil berupa <input> / <select>
+        }
+        function login()
+        {
+            let username = document.getElementById('username').value;
+            let password = document.getElementById('password').value;
+            if (username === "oka" && password === "123") {
+                document.getElementById("message").innerHTML =
+                "<div class='alert alert-success'><i><b>Login Berhasil!<i><b></div>";
+            } else {
+                document.getElementById("message").innerHTML =
+                "<div class='alert alert-danger'> <i><strong>Login Gagal! </strong>, Silahkan Check Username atau Password Anda.<i></div>";
+            }
+        }
+    </script>
+</head>
+<body>
+    <button onclick="buttonClick()"  class="btn btn-danger">
+        Click Me!
+    </button>
+    <button onclick="confirmation()" class="btn btn-info">
+        Click for Confirmation!
+    </button>
+    <button onclick="getName()" class="btn btn-success"> 
+        Fill Your Name! 
+    </button>
+
+    <!-- card menghitung luas segitiga -->
+    <div class="card col-lg-3 col-md-6 m-2">
+        <!-- Card header -->
+        <div class="card-header bg-dark">
+            <h3 class="text-white">Hitung Segitiga</h3>
+        </div>
+        <!-- Card Body -->
+        <div class="card-body">
+            Masukkan Nilai Alas Segitiga
+            <input type="number" class="form-control mb-2" id="alas_segitiga">
+            Masukkan Nilai Tinggi Segitiga
+            <input type="number" class="form-control mb2" id="tinggi_segitiga">
+            <button onclick="getNilai()" class="btn btn-primary btn-block ">Hitung Luas</button>
+        </div>
+        <!-- Card footer -->
+        <div class="card-footer">
+            <!-- Show Result -->
+            <h5 class="text-info" id="result">
+                
+            </h5>
+        </div>
+     
+    </div>
+    <!-- Membuat table login -->
+    <div class="card col-lg-3 col-md-6 m-2">
+        <!-- challenge -->
+        <div class="card-header bg-info">
+            <h3 class="text-white">Login Form</h3>
+        </div>
+        <div class="card-body">
+            <input type="text" class="form-control mb-3" id="username"
+            placeholder="Username">
+            <input type="password" class="form-control mb-3" id="password"
+            placeholder="Password">
+            <button onclick="login()" class="btn btn-info btn-block">Login</button>
+        </div>
+        <div class="card-footer" id="message">
+
+        </div>
+    </div>
+</body>
+</html>
